@@ -1,0 +1,173 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: endpoints.multicloud.ibm.com
+spec:
+  group: multicloud.ibm.com
+  names:
+    kind: Endpoint
+    listKind: EndpointList
+    plural: endpoints
+    singular: endpoint
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          type: object
+        status:
+          type: object
+  version: v1beta1
+  versions:
+  - name: v1beta1
+    served: true
+    storage: true
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: multicluster-endpoint
+spec: {}
+status: {}
+
+---
+apiVersion: v1
+data:
+  kubeconfig: YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0gY2x1c3RlcjoKICAgIGluc2VjdXJlLXNraXAtdGxzLXZlcmlmeTogdHJ1ZQogICAgc2VydmVyOiBodHRwczovL2FwaS5tY20tZGVtby1lbnYucG5wLXNvbG4ubWw6NjQ0MwogIG5hbWU6IGRlZmF1bHQtY2x1c3Rlcgpjb250ZXh0czoKLSBjb250ZXh0OgogICAgY2x1c3RlcjogZGVmYXVsdC1jbHVzdGVyCiAgICBuYW1lc3BhY2U6IGRlZmF1bHQKICAgIHVzZXI6IGRlZmF1bHQtYXV0aAogIG5hbWU6IGRlZmF1bHQtY29udGV4dApjdXJyZW50LWNvbnRleHQ6IGRlZmF1bHQtY29udGV4dApraW5kOiBDb25maWcKcHJlZmVyZW5jZXM6IHt9CnVzZXJzOgotIG5hbWU6IGRlZmF1bHQtYXV0aAogIHVzZXI6CiAgICB0b2tlbjogZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklraFBTVEozUWxkTFlsTTBSazFoV1ZkSVVFbFFVVWhWYURrMmExSklhelV3YzJRelpGaElVbFoyYzFVaWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUowWlhOMExXTnNkWE4wWlhJaUxDSnJkV0psY201bGRHVnpMbWx2TDNObGNuWnBZMlZoWTJOdmRXNTBMM05sWTNKbGRDNXVZVzFsSWpvaWRHVnpkQzFqYkhWemRHVnlMV0p2YjNSemRISmhjQzF6WVMxMGIydGxiaTAyWW5SdWFDSXNJbXQxWW1WeWJtVjBaWE11YVc4dmMyVnlkbWxqWldGalkyOTFiblF2YzJWeWRtbGpaUzFoWTJOdmRXNTBMbTVoYldVaU9pSjBaWE4wTFdOc2RYTjBaWEl0WW05dmRITjBjbUZ3TFhOaElpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WlhKMmFXTmxMV0ZqWTI5MWJuUXVkV2xrSWpvaU5tVmtObVV6WVdZdE1UVmxNQzAwTkdZNUxUZ3pNR010TTJWbU9HUXhORGxtWkdOaUlpd2ljM1ZpSWpvaWMzbHpkR1Z0T25ObGNuWnBZMlZoWTJOdmRXNTBPblJsYzNRdFkyeDFjM1JsY2pwMFpYTjBMV05zZFhOMFpYSXRZbTl2ZEhOMGNtRndMWE5oSW4wLkg2U3BQdU5LN05YVW5MSGlvM1BIbHZwQjkwdDNqQW03TjBEcXdybk5yaUFmaFJNY0hNUHZDT2lGS2FBQnlHaDlDcUZldGc1OU0tekRoYmhoTFNyRnNIV1lWQzk3OThVTlpBUkczVDJ0Y2ZmdVpydHZicTBPbURMMXMtNGdDMVhnelVRNjdreVduX2FvQ04wdHMyamZpeFRqa2FfZzl0anU3NmhsNDB0MENjUmg1Tm1CRXBBU1JjeHNGcjVHNHg1YS1JSzJuNnVlMzB2ZlZrREROeVNGWTZnMFhjcEplUzFYdzRGZ1AzemdRbVZudTZvVmFqdV8yMy04aVhQUktLQlRndWY3Q0tTS2dDX3hkV0JFaFhLWV9ZTC1nSW10M1RmVHhlTXZ4N1FFWm1VRHZiSC14LXhqMks0MlJTc21BLTBhZ3l6Q3JxVFFpdk5TZm5GNFRRMGs4dwo=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: klusterlet-bootstrap
+  namespace: multicluster-endpoint
+type: Opaque
+
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJjcC5pY3IuaW8iOnsidXNlcm5hbWUiOiJjcCIsInBhc3N3b3JkIjoiZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKcGMzTWlPaUpKUWswZ1RXRnlhMlYwY0d4aFkyVWlMQ0pwWVhRaU9qRTFPRGt6TnpNek56RXNJbXAwYVNJNklqUTFPRFJqTm1JNU5URTFNelJqWXpFNFl6RmpPVGMxWVRGaE1qTTJOV1kzSW4wLi01ZHUtcDRKRXJhbjY1dFNjQlh4aWdVc2lLT1pTd1lOT3FiOVJMOHNEdWsiLCJlbWFpbCI6ImljcEBpYm0uY29tIiwiYXV0aCI6IlkzQTZaWGxLYUdKSFkybFBhVXBKVlhwSk1VNXBTamt1WlhsS2NHTXpUV2xQYVVwS1VXc3daMVJYUm5saE1sWXdZMGQ0YUZreVZXbE1RMHB3V1ZoUmFVOXFSVEZQUkd0NlRucE5lazU2UlhOSmJYQXdZVk5KTmtscVVURlBSRkpxVG0xSk5VNVVSVEZOZWxKcVdYcEZORmw2Um1wUFZHTXhXVlJHYUUxcVRUSk9WMWt6U1c0d0xpMDFaSFV0Y0RSS1JYSmhialkxZEZOalFsaDRhV2RWYzJsTFQxcFRkMWxPVDNGaU9WSk1PSE5FZFdzPSJ9fX0=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: multicluster-endpoint-operator-pull-secret
+  namespace: multicluster-endpoint
+type: kubernetes.io/dockerconfigjson
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  name: ibm-multicluster-endpoint-operator
+  namespace: multicluster-endpoint
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: ibm-multicluster-endpoint-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: ibm-multicluster-endpoint-operator
+  namespace: multicluster-endpoint
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: ibm-multicluster-endpoint-operator
+  namespace: multicluster-endpoint
+spec:
+  selector:
+    matchLabels:
+      name: ibm-multicluster-endpoint-operator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: ibm-multicluster-endpoint-operator
+    spec:
+      containers:
+      - command:
+        - ibm-klusterlet-operator
+        env:
+        - name: WATCH_NAMESPACE
+        - name: OPERATOR_NAME
+          value: ibm-klusterlet-operator
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        image: cp.icr.io/cp/icp-foundation/icp-multicluster-endpoint-operator:3.3.0
+        imagePullPolicy: Always
+        name: ibm-multicluster-endpoint-operator
+        resources: {}
+      imagePullSecrets:
+      - name: multicluster-endpoint-operator-pull-secret
+      serviceAccountName: ibm-multicluster-endpoint-operator
+status: {}
+
+---
+apiVersion: multicloud.ibm.com/v1beta1
+kind: Endpoint
+metadata:
+  creationTimestamp: null
+  name: endpoint
+  namespace: multicluster-endpoint
+spec:
+  applicationManager:
+    enabled: true
+  bootstrapConfig:
+    hubSecret: multicluster-endpoint/klusterlet-bootstrap
+  clusterLabels:
+    cloud: auto-detect
+    vendor: auto-detect
+  clusterName: test-cluster
+  clusterNamespace: test-cluster
+  connectionManager:
+    enabledGlobalView: false
+  imagePullSecret: multicluster-endpoint-operator-pull-secret
+  imageRegistry: cp.icr.io/cp/icp-foundation
+  metering:
+    enabled: false
+  policyController:
+    enabled: true
+  prometheusIntegration:
+    enabled: true
+  searchCollector:
+    enabled: true
+  serviceRegistry:
+    dnsSuffix: mcm.svc
+    enabled: true
+    plugins: kube-service
+  tillerIntegration:
+    enabled: true
+  topologyCollector:
+    enabled: true
+    updateInterval: 15
+  version: 3.3.0
+status: {}
