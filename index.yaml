@@ -3,7 +3,7 @@ entries:
   wa-dyn-agent-prod:
   - apiVersion: v2
     appVersion: 9.5.0.02
-    created: "2020-08-20T02:07:09.795951176-07:00"
+    created: "2020-08-20T02:21:56.575294236-07:00"
     description: Helm chart for configuring IBM Workload Automation Agent.
     digest: 45dbe337f266353a242784a0d4e3ec20de9d88f6fa21cd8d2504c63c9e589010
     keywords:
@@ -20,4 +20,4 @@ entries:
     urls:
     - wa-dyn-agent-prod-1.1.0.tgz
     version: 1.1.0
-generated: "2020-08-20T02:07:09.794244266-07:00"
+generated: "2020-08-20T02:21:56.564395714-07:00"
