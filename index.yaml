@@ -3,7 +3,7 @@ entries:
   wa-dyn-agent-prod:
   - apiVersion: v2
     appVersion: 9.5.0.02
-    created: "2020-08-20T01:29:04.347565253-07:00"
+    created: "2020-08-20T02:07:09.795951176-07:00"
     description: Helm chart for configuring IBM Workload Automation Agent.
     digest: 45dbe337f266353a242784a0d4e3ec20de9d88f6fa21cd8d2504c63c9e589010
     keywords:
@@ -20,25 +20,4 @@ entries:
     urls:
     - wa-dyn-agent-prod-1.1.0.tgz
     version: 1.1.0
-  workload-automation-prod:
-  - apiVersion: v2
-    appVersion: 9.5.0.02
-    created: "2020-08-20T01:29:04.398710697-07:00"
-    description: Helm chart for configuring IBM Workload Automation.
-    digest: 7b3b368a88672368654e3d9041136c974e9274cecf1b3728cfe024e0aba03fe0
-    keywords:
-    - Commercial
-    - amd64
-    - Workload Scheduler
-    - Workload Automation
-    - Automation
-    - DevOps
-    - ICP
-    kubeVersion: '>=1.14.0 || >=1.14.0-0'
-    maintainers:
-    - name: IBM Workload Automation
-    name: workload-automation-prod
-    urls:
-    - workload-automation-prod-1.1.0.tgz
-    version: 1.1.0
-generated: "2020-08-20T01:29:04.344198631-07:00"
+generated: "2020-08-20T02:07:09.794244266-07:00"
