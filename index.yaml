@@ -1,27 +1,31 @@
 apiVersion: v1
 entries:
+  wa-dyn-agent-prod:
+  - apiVersion: v2
+    appVersion: 9.5.0.02
+    created: "2020-08-20T01:29:04.347565253-07:00"
+    description: Helm chart for configuring IBM Workload Automation Agent.
+    digest: 45dbe337f266353a242784a0d4e3ec20de9d88f6fa21cd8d2504c63c9e589010
+    keywords:
+    - Commercial
+    - amd64
+    - Workload Scheduler
+    - Workload Automation
+    - Automation
+    - DevOps
+    kubeVersion: '>=1.14.0 || >=1.14.0-0'
+    maintainers:
+    - name: IBM Workload Automation
+    name: wa-dyn-agent-prod
+    urls:
+    - wa-dyn-agent-prod-1.1.0.tgz
+    version: 1.1.0
   workload-automation-prod:
   - apiVersion: v2
     appVersion: 9.5.0.02
-    created: "2020-08-12T04:10:41.664291419-07:00"
-    dependencies:
-    - alias: waserver
-      condition: waserver.enableServer
-      name: wa-server-prod
-      repository: ""
-      version: 1.1.0
-    - alias: waconsole
-      condition: waconsole.enableConsole
-      name: wa-console-prod
-      repository: ""
-      version: 1.1.0
-    - alias: waagent
-      condition: waagent.enableAgent
-      name: wa-dyn-agent-prod
-      repository: ""
-      version: 1.1.0
+    created: "2020-08-20T01:29:04.398710697-07:00"
     description: Helm chart for configuring IBM Workload Automation.
-    digest: 49c848eb3449ad2e6df742fab5b410fa8a15eef82becf2e464f0207cb5e625d4
+    digest: 7b3b368a88672368654e3d9041136c974e9274cecf1b3728cfe024e0aba03fe0
     keywords:
     - Commercial
     - amd64
@@ -35,6 +39,6 @@ entries:
     - name: IBM Workload Automation
     name: workload-automation-prod
     urls:
-    - https://tapansirole.github.io/helm-chart/workload-automation-prod-1.1.0.tgz
+    - workload-automation-prod-1.1.0.tgz
     version: 1.1.0
-generated: "2020-08-12T04:10:41.611025718-07:00"
+generated: "2020-08-20T01:29:04.344198631-07:00"
